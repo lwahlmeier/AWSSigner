@@ -104,9 +104,9 @@ public class AWSSigner {
     sb.append("\n")
     .append(HOST_STRING).append(";").append(X_AMZ_DATE_STRING).append("\n")
     .append(awsParams.dataHash);
-    System.out.println(sb.toString());
+
     String s2s = getSHA256Hash(sb.toString());
-    System.out.println(s2s);
+
     sb = new StringBuilder();
     sb.append(AWS_HASH).append("\n")
     .append(awsParams.AMZDate).append("\n")
@@ -115,7 +115,6 @@ public class AWSSigner {
     .append(awsParams.service).append("/")
     .append(AWS_REQUEST).append("\n");
     sb.append(s2s);
-    System.out.println(sb.toString());
     return byteArrayToHex(sign(signingKey, sb.toString()));
   }
 
